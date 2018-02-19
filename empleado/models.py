@@ -11,3 +11,6 @@ class Empleado(models.Model):
     phone = models.CharField(max_length=10)
     boss = models.ForeignKey('self', models.SET_NULL,
                              blank=True, null=True)
+
+    def __str__(self):
+        return self.name + ' ' + self.lastname

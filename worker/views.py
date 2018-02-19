@@ -4,6 +4,6 @@ from django.shortcuts import redirect, render
 
 def home(request):
     if (request.user.is_authenticated):
-        return render(request, 'home.html')
+        return redirect('/tareas/')
     else:
         return redirect('/accounts/login/')
