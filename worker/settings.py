@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'unidad.apps.UnidadConfig',
     'empleado.apps.EmpleadoConfig',
+    'tareas.apps.TareasConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

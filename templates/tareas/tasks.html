@@ -6,10 +6,10 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
 
-        <form action="{% url 'tareas:new_tasks' %}" method="post">
+        <form action="{% url 'tareas:tasks' %}" method="post">
             {% csrf_token %}
             <h1 class="h3 mb-3 font-weight-normal">Que estas haciendo?</h1>
-            <input type="text" id="id_newtask" name="id_newtask" class="form-control" placeholder="Nueva tarea" required autofocus>
+            <input type="text" id="id_name" name="name" class="form-control" placeholder="Nueva tarea" required autofocus>
             <br>
             <input type="submit" value="Hagamoslo" />
         </form>
