@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template import loader
 from .models import Task, Tracking
@@ -6,6 +7,7 @@ from empleado.models import Empleado
 import datetime
 
 
+@login_required
 def tasks(request):
     empleado = Empleado.objects.get(user=request.user)
     user_tasks = Task.objects.filter(owner=empleado).filter(create_date=datetime.date.today())
@@ -16,6 +18,7 @@ def tasks(request):
     return HttpResponse(template.render(context, request))
 
 
+@login_required
 def new(request):
     try:
         name_task = request.POST['id_newtask']
@@ -39,6 +42,7 @@ def new(request):
     return redirect('/tareas/')
 
 
+@login_required
 def stop_tracking(request, tracking_id):
     tracking = Tracking.objects.get(id=tracking_id)
     tracking.time_end = datetime.datetime.time(datetime.datetime.now())
@@ -49,6 +53,7 @@ def stop_tracking(request, tracking_id):
     return redirect('/tareas/')
 
 
+@login_required
 def start_tracking(request, tracking_id):
     tracking_old = Tracking.objects.get(id=tracking_id)
     tracking_new = Tracking(task=tracking_old.task)
@@ -56,4 +61,3 @@ def start_tracking(request, tracking_id):
     tracking_new.task.open_task()
 
     return redirect('/tareas/')
-
